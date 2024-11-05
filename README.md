@@ -18,6 +18,148 @@ $$$$ find the number of sales transactions in each region.
 #### find the top 5 customers by total purchase amount. 
 #### calculate the percentage of total sales contributed by each region. 
 #### identify products with no sales in the last quarter.
+[Uploadicreate Database LITA_Capstone_Dataset_S
+
+Select * from [dbo].[capstone_sales]
+
+--1-Total Sales 4 Each Product Category--
+
+Select 
+	Product,
+	SUM(Quantity) AS TotalSales
+FROM 
+	[dbo].[capstone_sales]
+GROUP BY 
+	Product
+ORDER BY 
+	TotalSales Desc
+
+--2-Number Of Sales Transaction In Each Region--
+
+SELECT
+	Region,
+	COUNT(*) AS NoOfSalesTransactions
+FROM
+	[dbo].[capstone_sales]
+GROUP BY 
+	Region
+ORDER BY 
+	NoOfSalesTransactions Desc
+
+--In order to run the next step, we'd need our revenue column
+
+ALTER TABLE [dbo].[capstone_sales]
+ADD Revenue FLOAT
+
+--Now, we update table. Since our revenue column is empty, we need to fill it up--
+
+UPDATE [dbo].[capstone_sales]
+SET Revenue = Quantity * UnitPrice
+
+--3-Highest Selling Product By Total Sales Value--
+
+SELECT Top 1
+	Product,
+	SUM(Revenue) AS TotalSalesValue
+FROM 
+	[dbo].[capstone_sales]
+GROUP BY 
+	Product
+ORDER BY 
+	TotalSalesValue Desc
+
+--4-Total Revenue Per Product--
+
+SELECT 
+	Product, 
+	SUM(Revenue) AS TotalRevenuePerProduct
+FROM 
+	[dbo].[capstone_sales]
+GROUP BY 
+	Product
+ORDER BY 
+	TotalRevenuePerProduct DESC
+
+--5-Monthly Sales Totals for D Current Year--
+
+Select * from [dbo].[capstone_sales]
+
+SELECT 
+	MONTH(OrderDate) AS SalesMonth,
+	SUM(Quantity) AS MonthlySalesTotal
+FROM 
+	[dbo].[capstone_sales]
+WHERE 
+	YEAR(OrderDate) = YEAR(GETDATE())
+GROUP BY 
+	MONTH(OrderDate)
+ORDER BY 
+	SalesMonth
+
+--6- top 5 customers by total purchase amount--
+
+SELECT *
+FROM [dbo].[capstone_sales]
+SELECT TOP 5 
+	Customer_Id, 
+	SUM(Revenue) AS TotalPurchaseAmount
+FROM 
+	[dbo].[capstone_sales]
+GROUP BY 
+	Customer_Id
+ORDER BY 
+	TotalPurchaseAmount DESC
+
+--7-percentage of total sales contributed by each region--
+--Without '%'
+SELECT 
+	Region,
+	SUM(Revenue) AS RegionalSales,
+	(SUM(Revenue) / (SELECT SUM(Revenue) FROM [dbo].[capstone_sales]) * 100) AS SalesPercentage
+FROM 
+	[dbo].[capstone_sales]
+GROUP BY 
+	Region
+ORDER BY
+	RegionalSales Desc
+
+--With  addtion of '%' 
+
+SELECT 
+	Region,
+	SUM(Revenue) AS RegionalSales,
+	CONCAT(ROUND(SUM(Revenue) / (Select SUM(Revenue) FROM [dbo].[capstone_sales]) * 100, 2), '%') AS SalesPercentage
+FROM
+	[dbo].[capstone_sales] 
+GROUP BY
+	Region
+ORDER BY
+	RegionalSales Desc
+
+--8- Products with no sales in the last quarter--
+
+SELECT 
+	Product
+FROM 
+	[dbo].[capstone_sales]
+WHERE 
+	Product NOT IN (
+					SELECT 
+					Product
+					FROM 
+					[dbo].[capstone_sales]
+					WHERE 
+					OrderDate >= DATEADD(quarter, -1, GETDATE())
+					)
+
+Select * from [dbo].[capstone_sales]
+
+
+
+
+
+ng Create Database LITA_CAPSTONE_S.sql…]()
+
 
 ### Capstone SalesData Analysis: Power BI
 #### Create a dashboard that visualizes the insights found in Excel and SQL. 
