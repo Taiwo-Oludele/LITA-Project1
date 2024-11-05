@@ -5,20 +5,22 @@
 
 #### Use Excel formulas to calculate metrics such as average sales per product and total revenue by region:<img width="727" alt="Capstone_sale_excel" src="https://github.com/user-attachments/assets/8230f768-3df8-4a24-8ed1-7e34b2813044">
 
-#### Create any other interesting report:
+#### Create any other interesting report:<img width="654" alt="Capstone_cust_chart" src="https://github.com/user-attachments/assets/0bcdca60-4049-4317-a066-ed12c54422d6">
 
 ### Capstone SalesData Analysis: SQL
-#### sql query1
-#### sql query2
-#### sql queru2
-#### sql query3
-#### sql query4
-#### sql query5
+#### Create any other interesting report
+#### Write queries to extract key insights based on the following questions. 
+#### retrieve the total sales for each product category. 
+$$$$ find the number of sales transactions in each region. 
+#### find the highest-selling product by total sales value. 
+#### calculate total revenue per product. 
+#### calculate monthly sales totals for the current year. 
+#### find the top 5 customers by total purchase amount. 
+#### calculate the percentage of total sales contributed by each region. 
+#### identify products with no sales in the last quarter.
+
 ### Capstone SalesData Analysis: Power BI
-#### Remove Duplicate :
-#### Add Revenue Column
-#### Create Measure to count customer using customer_id
-#### Matrix model was used to analysis Sales overview
-#### Table model was used to analysis product by region
-#### Chart was used for Top Product by Region
-#### Card was used for customer count
+#### Create a dashboard that visualizes the insights found in Excel and SQL. 
+#### The dashboard should include a sales overview, top-performing products, and regional breakdowns :<img width="673" alt="sales report_power" src="https://github.com/user-attachments/assets/136487ab-bae4-4fde-8ba8-8899e2cc984f">
+
+
