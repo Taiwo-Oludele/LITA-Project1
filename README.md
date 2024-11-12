@@ -37,6 +37,8 @@
 
 ### Capstone SalesData Analysis: Power BI
 #### Create a dashboard that visualizes the insights found in Excel and SQL. 
-#### The dashboard should include a sales overview, top-performing products, and regional breakdowns :<img width="673" alt="sales report_power" src="https://github.com/user-attachments/assets/136487ab-bae4-4fde-8ba8-8899e2cc984f">
+#### The dashboard should include a sales overview, top-performing products, and regional breakdowns :
+<img width="556" alt="sales report_power2" src="https://github.com/user-attachments/assets/11bf804c-e8b4-4c3e-815f-084405fefd97">
+
 
 
